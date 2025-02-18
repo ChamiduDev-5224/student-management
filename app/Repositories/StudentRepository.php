@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repositories;
 
 use App\Models\Student;
@@ -30,5 +31,12 @@ class StudentRepository implements StudentRepositoryInterface
     public function delete($id)
     {
         return Student::destroy($id);
+    }
+
+    public function search($query)
+    {
+        return Student::where('name', 'LIKE', "%{$query}%")
+            ->orWhere('email', 'LIKE', "%{$query}%")
+            ->get();
     }
 }
