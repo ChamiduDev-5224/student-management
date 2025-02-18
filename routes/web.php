@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\StudentApiController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,3 +13,8 @@ Route::post('stdStore', [StudentController::class, 'store'])->name('std_store');
 Route::put('stdUpdate/{id}', [StudentController::class, 'update'])->name('std_update');
 Route::delete('stdDelete/{id}', [StudentController::class, 'destroy'])->name('std_delete');
 
+
+//api
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('students', StudentApiController::class);
+});
