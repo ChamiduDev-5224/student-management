@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('courses', function (Blueprint $table) {
-            $table->tinyIncrements('id')->comment('Course Id');
+            $table->tinyIncrements('id')->index()->comment('Course Id');
             $table->string('name',100);
             $table->timestamps();
         });
