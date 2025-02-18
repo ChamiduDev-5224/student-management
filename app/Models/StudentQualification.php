@@ -10,4 +10,8 @@ class StudentQualification extends Model
     use HasFactory;
 
     protected $fillable = ['student_id', 'qualification'];
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
 }
